@@ -55,21 +55,21 @@ const ExperiencePage: React.FC = () => {
     getExperiences();
   }, [getExperiences, user]);
 
-  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number) => {
+  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
-  };
+};
 
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setSearch(event.target.value);
   };
 
-  const deleteExperience = async (id: string) => {
+  const deleteExperience = async (id: string): Promise<void> => {
     await request.delete(`experiences/${id}`);
     getExperiences();
     toast.success('Success delete experience!');
   };
 
-  const editExperience = async (id: string) => {
+  const editExperience = async (id: string): Promise<void> => {
     const { data } = await request.get(`experiences/${id}`);
     form.setFieldsValue(data);
     controlModal(true);

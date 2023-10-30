@@ -4,16 +4,14 @@ import { CircularProgress } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 
 import AdminLayout from "../components/AdminLayout";
 import useEducation from "../store/education";
 import useExperience from "../store/experience";
 import usePortfolio from "../store/portfolio";
 import useSkill from "../store/skill";
+import useMessage from '../store/message';
 
 const bull = (
   <Box
@@ -47,12 +45,17 @@ const HomePage = () => {
     getPortfolios,
   } = usePortfolio();
 
+  const {
+    total: messageTotal,
+    getMessages,
+  } = useMessage();
+
   useEffect(() => {
     getSkills();
     getEducations();
     getExperiences();
     getPortfolios();
-  }, [getSkills, user, getEducations, getExperiences, getPortfolios]);
+  }, [getSkills, user, getEducations, getExperiences, getPortfolios, getMessages]);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -101,6 +104,16 @@ const HomePage = () => {
         <Stack spacing={4} direction="row">
         <h2>Experiences {experienceTotal}</h2>
         <CircularProgress variant="determinate" value={experienceTotal} />
+        <CircularProgress variant="determinate" value={progress} />
+      </Stack>
+      </CardContent>
+      </Card>
+      <br/>
+      <Card sx={{ minWidth: 250 }}>
+      <CardContent>
+        <Stack spacing={4} direction="row">
+        <h2>Messages {messageTotal}</h2>
+        <CircularProgress variant="determinate" value={messageTotal} />
         <CircularProgress variant="determinate" value={progress} />
       </Stack>
       </CardContent>

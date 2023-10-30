@@ -3,6 +3,7 @@ import { Form, Input, Modal, } from "antd";
 import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import { toast } from 'react-toastify';
 import Pagination from "@material-ui/lab/Pagination";
+
 import SkillCard from "../components/card/SkillCard";
 import request from "../server/index";
 import useSkill from "../store/skill";
@@ -55,21 +56,21 @@ const SkillsPage: React.FC = () => {
     getSkills();
   }, [getSkills, user]);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
+  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
   };
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(event.target.value);
   };
 
-  const deleteSkill = async (id: string) => {
+  const deleteSkill = async (id: string): Promise<void> => {
     await request.delete(`skills/${id}`);
     getSkills();
     toast.success('Delete skill!');
   };
 
-  const editSkill = async (id: string) => {
+  const editSkill = async (id: string): Promise<void> => {
     const { data } = await request.get(`skills/${id}`);
     form.setFieldsValue(data);
     console.log(id);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -7,13 +8,15 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
+
 import '../../pages/skills.css'
 import Portfolio from '../../types/portfolio';
 
 
 interface PortfolioCardProps {
     portfolio: Portfolio;
+    editPortfolio: (id: string) => void;
+    deletePortfolio: (id: string) => void;
 }
 
 const PortfolioCard: React.FC<PortfolioCardProps> = ({editPortfolio, deletePortfolio, portfolio }) => {

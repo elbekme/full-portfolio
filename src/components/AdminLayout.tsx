@@ -106,18 +106,19 @@ const AdminLayout: React.FC = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const handleDrawerOpen = () => {
+  const handleDrawerOpen: () => void = () => {
     setOpen(true);
   };
-
-  const handleDrawerClose = () => {
+  
+  const handleDrawerClose: () => void = () => {
     setOpen(false);
   };
-
-  const logout = () => {
+  
+  const logout: () => void = () => {
     navigate('/');
     Cookies.remove(TOKEN);
-  }
+  };
+  
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />

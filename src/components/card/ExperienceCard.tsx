@@ -9,6 +9,8 @@ import Experience from '../../types/experience';
 
 interface ExperinceCardProps {
     experience: Experience;
+    editExperience: (id: string) => void;
+    deleteExperience: (id: string) => void;
 }
 
 const ExperienceCard: React.FC<ExperinceCardProps> = ({editExperience, deleteExperience, experience }) => {

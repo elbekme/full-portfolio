@@ -9,6 +9,8 @@ import '../../pages/skills.css';
 
 interface SkillCardProps {
   skill: Skill;
+  editSkill: (id: string) => void;
+  deleteSkill: (id: string) => void;
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({deleteSkill, editSkill, skill }) => {

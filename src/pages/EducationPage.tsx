@@ -1,14 +1,14 @@
-import React, { useEffect, Fragment, ChangeEvent } from "react";
+import React, { useEffect, Fragment, ChangeEvent, ReactElement  } from "react";
 import { Form, Input, Modal } from "antd";
 import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
 import { toast } from 'react-toastify';
 
 import request from "../server/index";
-import "./skills.css";
 import useEducation from "../store/education";
 import Education from "../types/education";
 import EducationCard from "../components/card/EducationCard";
+import "./skills.css";
 
 const EducationPage: React.FC = () => {
   const {
@@ -29,6 +29,8 @@ const EducationPage: React.FC = () => {
     setSelected,
     setModalLoading,
   } = useEducation();
+  // const lineBreak: JSX.Element = <br/>;
+  const lineBreak: ReactElement<any, any> = <br />;
 
   const [form] = Form.useForm();
 
@@ -55,21 +57,21 @@ const EducationPage: React.FC = () => {
     getEducations();
   }, [getEducations, user]);
 
-  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number) => {
+  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
   };
 
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setSearch(event.target.value);
   };
 
-  const deleteEducation = async (id: string) => {
+  const deleteEducation = async (id: string): Promise<void> => {
     await request.delete(`education/${id}`);
     getEducations();
     toast.success('Success delete education!');
   };
 
-  const editEducation = async (id: string) => {
+  const editEducation = async (id: string): Promise<void> => {
     const { data } = await request.get(`education/${id}`);
     form.setFieldsValue(data);
     controlModal(true);
@@ -104,7 +106,7 @@ const EducationPage: React.FC = () => {
             </Button>
           </Grid>
         </Grid>
-        <br />
+        {lineBreak}
         <div className="card">
           {loading ? (
             <div className="loader"></div>

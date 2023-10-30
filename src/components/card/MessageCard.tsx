@@ -4,30 +4,31 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import '../../pages/skills.css';
-import Education from '../../types/education';
+import Message from '../../types/message';
 
 
-interface EducationCardProps {
-    education: Education;
-    editEducation: (id: string) => void;
-    deleteEducation: (id: string) => void;
+interface MessageCardProps {
+    message: Message;
+    editMessage: (id: string) => void;
+    deleteMessage: (id: string) => void;
 }
 
-const EducationCard: React.FC<EducationCardProps> = ({editEducation, deleteEducation, education }) => {
+const MessageCard: React.FC<MessageCardProps> = ({editMessage, deleteMessage, message }) => {
     const handleDelete = () => {
-        deleteEducation(education._id);
+        deleteMessage(message._id);
     };
     const handleEdit = () => {
-        editEducation(education._id);
+        editMessage(message._id);
     }
 
   return (
       <div className="flip-card">
       <div className="flip-card-inner">
         <div className="flip-card-front">
-          <h2>{education.name}</h2>
-          <h2>{education.level}</h2>
-          <p style={{color:"white"}}>{education.description}</p>
+          <h2>{message.title}</h2>
+          <h2>{message.user}</h2>
+          <h2>{message.answer}</h2>
+          <p style={{color:"white"}}>{message.message}</p>
         </div>
         <div className="flip-card-back">
         <Button variant="outlined" color="primary" endIcon={<EditIcon />} onClick={handleEdit}>
@@ -42,4 +43,4 @@ const EducationCard: React.FC<EducationCardProps> = ({editEducation, deleteEduca
   );
 };
 
-export default EducationCard;
+export default MessageCard;

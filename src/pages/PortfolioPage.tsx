@@ -60,21 +60,21 @@ const PortfolioPage: React.FC = () => {
     getPortfolios();
   }, [getPortfolios, user]);
 
-  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number) => {
+  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
   };
 
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setSearch(event.target.value);
   };
 
-  const deletePortfolio = async (id: string) => {
+  const deletePortfolio = async (id: string): Promise<void> => {
     await request.delete(`portfolios/${id}`);
     getPortfolios();
     toast.success('Success delete portfolio!');
   };
 
-  const editPortfolio = async (id: string) => {
+  const editPortfolio = async (id: string): Promise<void> => {
     const { data } = await request.get(`portfolios/${id}`);
     form.setFieldsValue(data);
     controlModal(true);
