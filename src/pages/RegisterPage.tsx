@@ -1,58 +1,9 @@
-// import '../pages/login.css';
-// import {Link} from 'react-router-dom'
-
-// const RegisterPage = () => {
-  
-//   return (<>
-//     <div className="login-page">
-//     <div className="login">
-//     <form className="signIn">
-//     <h3>Welcome<br />Back!</h3>
-//     <input
-//       type="firstname"
-//       className="w100"
-//       placeholder="Insert firstname"
-//       name="firstName"
-//       autoComplete="off"
-//       required
-//     />
-//      <input
-//       type="lastname"
-//       className="w100"
-//       placeholder="Insert lastname"
-//       name="lastName"
-//       autoComplete="off"
-//       required
-//     />
-//     <input
-//       type="username"
-//       className="w100"
-//       placeholder="Insert username"
-//       name="username"
-//       autoComplete="off"
-//       required
-//     />
-//     <input type="password" name="password" placeholder="Insert Password" required />
-//     <Link to="/">
-//       <button className="form-btn sx back" type="button">
-//         Back
-//       </button> 
-//     </Link>
-//     <button className="form-btn dx" type="submit">
-//       Log In
-//     </button>
-//   </form>
-//   </div>
-//   </div>
-//   </>
-//   )
-// }
-
-// export default RegisterPage
-
 import '../pages/login.css';
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../store/auth';
+import Register from '../types/register';
+import * as React from 'react';
 
 interface FormData {
   firstName: string;
@@ -62,35 +13,33 @@ interface FormData {
 }
 
 const RegisterPage = () => {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
-    username: '',
-    password: '',
-  });
+  const register = useAuth((state) => state.register);
 
-  const { firstName, lastName, username, password } = formData;
+  const navigate = useNavigate();
+  
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=> {
+      e.preventDefault();
+      const user: Register = {
+        firstName: e.currentTarget.firstName.value,
+        lastName: e.currentTarget.lastName.value,
+        username: e.currentTarget.username.value.trim(),
+        password: e.currentTarget.password.value.trim(),
+      };
+      register(user, navigate);
+    }
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
 
-    setFormData({
-      firstName: '',
-      lastName: '',
-      username: '',
-      password: '',
-    });
-  };
+
+
+
+  
 
   return (
     <>
       <div className="login-page">
         <div className="login">
-          <form className="signIn" onSubmit={handleLogin}>
+          <form className="signIn" onSubmit={handleSubmit}>
             <h3>Welcome<br />Back!</h3>
             <input
               type="text"
@@ -98,8 +47,8 @@ const RegisterPage = () => {
               placeholder="Insert firstname"
               name="firstName"
               autoComplete="off"
-              value={firstName}
-              onChange={handleInputChange}
+              // value={firstName}
+              // onChange={handleInputChange}
               required
             />
             <input
@@ -108,8 +57,8 @@ const RegisterPage = () => {
               placeholder="Insert lastname"
               name="lastName"
               autoComplete="off"
-              value={lastName}
-              onChange={handleInputChange}
+              // value={lastName}
+              // onChange={handleInputChange}
               required
             />
             <input
@@ -118,17 +67,17 @@ const RegisterPage = () => {
               placeholder="Insert username"
               name="username"
               autoComplete="off"
-              value={username}
-              onChange={handleInputChange}
+              // value={username}
+              // onChange={handleInputChange}
               required
             />
             <input
               type="password"
               name="password"
               placeholder="Insert Password"
-              value={password}
-              onChange={handleInputChange}
-              required
+              // value={password}
+              // onChange={handleInputChange}
+              // required
             />
             <Link to="/">
               <button className="form-btn sx back" type="button">

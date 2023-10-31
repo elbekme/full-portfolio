@@ -121,7 +121,9 @@ const MessagePage: React.FC = () => {
     setSelected,
     setModalLoading,
   } = useMessage();
-
+  const userId = localStorage.getItem("PORTFOLIO_USER")
+  ? JSON.parse(localStorage.getItem("PORTFOLIO_USER") || "")
+  : null;
   const [form] = Form.useForm();
 
   const handleOk = async () => {
@@ -129,6 +131,7 @@ const MessagePage: React.FC = () => {
       setModalLoading(true);
       const values = await form.validateFields();
       if (selected === null) {
+        values.whom = userId?._id;
         await request.post("messages", values);
         toast.success('Success add message!');
       } else {
@@ -147,21 +150,21 @@ const MessagePage: React.FC = () => {
     getMessages();
   }, [getMessages, message]);
 
-  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number) => {
+  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
   };
 
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setSearch(event.target.value);
   };
 
-  const deleteMessage = async (id: string) => {
+  const deleteMessage = async (id: string): Promise<void> => {
     await request.delete(`messages/${id}`);
     getMessages();
     toast.success('Success delete message!');
   };
 
-  const editMessage = async (id: string) => {
+  const editMessage = async (id: string): Promise<void> => {
     const { data } = await request.get(`messages/${id}`);
     form.setFieldsValue(data);
     controlModal(true);
@@ -205,6 +208,7 @@ const MessagePage: React.FC = () => {
               <MessageCard
                 key={message._id}
                 message={message}
+                // userId={userId}
                 deleteMessage={deleteMessage}
                 editMessage={editMessage}
               />
@@ -273,18 +277,6 @@ const MessagePage: React.FC = () => {
             <Form.Item
               label="Message"
               name="message"
-              rules={[
-                {
-                  required: true,
-                  message: "Please fill!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Answer"
-              name="answer"
               rules={[
                 {
                   required: true,

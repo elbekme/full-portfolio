@@ -55,6 +55,7 @@ const HomePage = () => {
     getEducations();
     getExperiences();
     getPortfolios();
+    getMessages();
   }, [getSkills, user, getEducations, getExperiences, getPortfolios, getMessages]);
 
   React.useEffect(() => {

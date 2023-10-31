@@ -9,9 +9,9 @@ import EducationPage from "./pages/EducationPage";
 import ExperiencePage from "./pages/ExperiencePage";
 import PortfolioPage from "./pages/PortfolioPage";
 import MessagePage from "./pages/MessagePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
-  // const { isAuthenticated, user } = useAuth();
   const isAuthenticated = useAuth((state) => state.isAuthenticated);
   const user = useAuth((state) => state.user);
   return (
@@ -34,8 +34,8 @@ const App = () => {
           <Route path="experience" element={<ExperiencePage />}/>
           <Route path="portfolio" element={<PortfolioPage />}/>
           <Route path="message" element={<MessagePage />}/>
-
         </Route>
+          <Route path="*" element={<NotFoundPage />} />
           <Route path="/register" element={<RegisterPage />}/>
       </Routes>
     </BrowserRouter>
