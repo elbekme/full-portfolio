@@ -57,13 +57,13 @@ const PortfolioPage: React.FC = () => {
           await request.post("portfolios", values);
           toast.success('Success add portfolio!');
                     
-        } 
-        else {
+        }else {
           await request.put(`portfolios/${selected}`, values);
           toast.success('Success update portfolio!');
         }
+
         if(selected){
-          await request.put(`portfolis/${selected}`, values);
+          await request.put(`portfolios/${selected}`, values);
         }
 
       }
@@ -89,31 +89,14 @@ const PortfolioPage: React.FC = () => {
     toast.success('Success delete porfolio!');
   };
 
-  // const editPortfolio = async (id: string): Promise<void> => {
-  //   const { data } = await request.get(`portfolios/${id}`);
-  //   form.setFieldsValue(data);
-  //   console.log(id);
-  //   controlModal(true);
-  //   setSelected(id);
-  // };
-  
   const editPortfolio = async (id: string): Promise<void> => {
-    console.log('Edit portfolio:', id);
-  
-    try {
-      const { data } = await request.get(`portfolios/${id}`);
-      console.log('Retrieved portfolio data:', data);
-      
-      form.setFieldsValue(data);
-      // console.log('Form fields:', form.getFieldsValue());
-  
-      controlModal(true);
-      setSelected(id);
-    } catch (error) {
-      console.error('Error retrieving portfolio:', error);
-    }
+    const { data } = await request.get(`portfolios/${id}`);
+    form.setFieldsValue(data);
+    console.log(id);
+    controlModal(true);
+    setSelected(id);
   };
-
+  
 
 
   return (
@@ -234,7 +217,7 @@ const PortfolioPage: React.FC = () => {
             <Form.Item
               label="Photo"
               >
-              <input type="file" style={{width:'100px'}} onChange={handleFileChange}/>
+              <input type="file" style={{width:'83px'}} onChange={handleFileChange}/>
             </Form.Item>
           </Form>
         </Modal>
