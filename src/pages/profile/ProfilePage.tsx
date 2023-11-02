@@ -174,7 +174,7 @@ const ProfilePage: React.FC = () => {
             </div>
 
             <hr />
-            <h1 className="skills-heading" id="skill">Education</h1>
+            <h1 className="skills-heading" id="education">Education</h1>
             <div className="profile-skill">
               <Box sx={{my: 2, width:'100%'}}>
               {educationLoading ? (
@@ -207,7 +207,7 @@ const ProfilePage: React.FC = () => {
             </div>
             
             <hr />
-            <h1 className="skills-heading" id="skill">Experience</h1>
+            <h1 className="skills-heading" id="experience">Experience</h1>
             <div className="profile-skill">
               <Box sx={{my: 2, width:'100%'}}>
               {experienceLoading ? (
@@ -240,7 +240,7 @@ const ProfilePage: React.FC = () => {
             </div>
             
             <hr />
-            <h1 className="skills-heading" id="skill">Portfolio</h1>
+            <h1 className="skills-heading" id="portfolio">Portfolio</h1>
             <div className="profile-skill">
               <Box sx={{my: 2, width:'100%'}}>
               {portfolioLoading ? (
@@ -274,7 +274,7 @@ const ProfilePage: React.FC = () => {
             </div>
             
             <hr />
-            <h1 className="skills-heading" id="skill">Messages</h1>
+            <h1 className="skills-heading" id="messages">Messages</h1>
             <div className="profile-skill">
               <Box sx={{my: 2, width:'100%'}}>
               {messageLoading ? (
