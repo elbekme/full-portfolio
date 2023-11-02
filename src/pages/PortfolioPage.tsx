@@ -27,38 +27,53 @@ const PortfolioPage: React.FC = () => {
     setSelected,
     setModalLoading,
   } = usePortfolio();
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [form] = Form.useForm();
 
+  const [form] = Form.useForm();
+  const [selectedFile, setSelectedFile] = useState(null);
+  
+  useEffect(() => {
+    getPortfolios();
+  }, [getPortfolios, user]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setSelectedFile(event.target.files[0]);
+    }
+  };
+  
   const handleOk = async () => {
     try {
       setModalLoading(true);
       const values = await form.validateFields();
-      const formData = new FormData();
-      formData.append("name", values.name);
-      formData.append("url", values.url);
-      formData.append("description", values.description);
-      formData.append("photo", selectedFile as File);
-      if (selected === null) {
-        await request.post("portfolios", values);
-        toast.success('Success add portfolio!');
-      } else {
-        await request.put(`portfolios/${selected}`, values);
-        toast.success('Success update portfolio!');
+
+      if (selectedFile) {
+        const formData = new FormData();
+        
+        formData.append('file', selectedFile);
+        const response = await request.post('upload', formData);
+        values.photo = response.data;
+
+        if (selected === null) {
+          await request.post("portfolios", values);
+          toast.success('Success add portfolio!');
+                    
+        } 
+        else {
+          await request.put(`portfolios/${selected}`, values);
+          toast.success('Success update portfolio!');
+        }
+        if(selected){
+          await request.put(`portfolis/${selected}`, values);
+        }
+
       }
       getPortfolios();
       controlModal(false);
       form.resetFields();
-      setSelectedFile(null);
-
     } finally {
       setModalLoading(false);
     }
   };
-
-  useEffect(() => {
-    getPortfolios();
-  }, [getPortfolios, user]);
 
   const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
@@ -71,22 +86,35 @@ const PortfolioPage: React.FC = () => {
   const deletePortfolio = async (id: string): Promise<void> => {
     await request.delete(`portfolios/${id}`);
     getPortfolios();
-    toast.success('Success delete portfolio!');
+    toast.success('Success delete porfolio!');
   };
 
+  // const editPortfolio = async (id: string): Promise<void> => {
+  //   const { data } = await request.get(`portfolios/${id}`);
+  //   form.setFieldsValue(data);
+  //   console.log(id);
+  //   controlModal(true);
+  //   setSelected(id);
+  // };
+  
   const editPortfolio = async (id: string): Promise<void> => {
-    const { data } = await request.get(`portfolios/${id}`);
-    form.setFieldsValue(data);
-    controlModal(true);
-    setSelected(id);
-  };
-
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (files && files.length > 0) {
-      setSelectedFile(files[0]);
+    console.log('Edit portfolio:', id);
+  
+    try {
+      const { data } = await request.get(`portfolios/${id}`);
+      console.log('Retrieved portfolio data:', data);
+      
+      form.setFieldsValue(data);
+      // console.log('Form fields:', form.getFieldsValue());
+  
+      controlModal(true);
+      setSelected(id);
+    } catch (error) {
+      console.error('Error retrieving portfolio:', error);
     }
   };
+
+
 
   return (
     <Fragment>
@@ -117,7 +145,7 @@ const PortfolioPage: React.FC = () => {
           </Grid>
         </Grid>
         <br />
-        <div className="card">
+        <div className="component-card">
           {loading ? (
             <div className="loader"></div>
           ) : (
@@ -205,15 +233,8 @@ const PortfolioPage: React.FC = () => {
             </Form.Item>
             <Form.Item
               label="Photo"
-              name="photo"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select an image!",
-                },
-              ]}
-            >
-              <Input type="file" accept="image/" onChange={handleFileChange} />
+              >
+              <input type="file" style={{width:'100px'}} onChange={handleFileChange}/>
             </Form.Item>
           </Form>
         </Modal>

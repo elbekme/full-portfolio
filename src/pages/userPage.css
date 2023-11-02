@@ -1,0 +1,48 @@
+.user{
+    background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardd{
+    width: 350px;
+    height: 300px;
+    background: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    overflow: hidden;
+
+}
+
+
+.card-title{
+    text-align: center;
+    font-weight: 600;
+    color: #3876BF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.card-text{
+    text-align: center;
+    padding-top: 20px;
+    color: #7587bc;
+    font-weight: 600;
+    font-size: 20px;
+    padding-bottom: 5px;
+    line-height: 30px;
+}
+.card-line{
+    width: 100%;
+    border: 1px solid rgb(152, 148, 148);
+}
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+.card-footer_link{
+    text-decoration: none;
+}

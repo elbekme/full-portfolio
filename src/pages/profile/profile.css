@@ -1,0 +1,98 @@
+.profile-header{
+    display: flex;
+    justify-content:center;
+    flex-direction: row;
+}
+.profile-header-item{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+p{
+    color: white;
+}
+.profile-skill{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+.skills-heading{
+    text-align: left;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+.profile-link{
+    text-decoration: none;
+    font-family: sans-serif;
+    color: white;
+    transition: all .3s;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.profile-link:hover{
+    color: yellow;
+}
+.header-info{
+    display: flex;
+    min-height: 300px;
+    align-items: center;
+}
+.header-info-text{
+    width: 50%;
+}
+.header-info_user{
+    font-size: 30px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.header-info-img{
+    width: 50%;
+}
+.header-image{
+    height: 300px;
+    margin-left: calc(50% - 25%);
+    border-radius: 50%;
+}
+
+.footer-profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1976d2;
+    padding: 15px 5px;
+    margin-top: 80px;
+    min-height: 100px;
+}
+.footer-profile-info{
+    color: white;
+    width: 60%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.footer-profile-contact{
+    display: flex;
+    width: 40%;
+    justify-content: end;
+    gap: 20px;
+}
+.footer-logo{
+    color: white;
+}
+.btn-back{
+    background: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: none;
+    transition: all .3s;
+    color: white;
+    cursor: pointer;
+    border-bottom: 2px solid white;
+}
+.btn-back:hover{
+    color: yellow;
+    border-bottom-color: yellow;
+}
+.carousel-text{
+    display: flex;
+    justify-content: center;
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Outlet,useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, NavLink, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -8,17 +8,20 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import BookIcon from '@mui/icons-material/Book';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import AssignmentIcon from '@mui/icons-material/Assignment';  
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
@@ -26,6 +29,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 
 import { TOKEN } from '../constants/index';
+import './adminLayout.css';
 
 
 const drawerWidth = 200;
@@ -105,6 +109,7 @@ const AdminLayout: React.FC = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleDrawerOpen: () => void = () => {
     setOpen(true);
@@ -115,8 +120,15 @@ const AdminLayout: React.FC = () => {
   };
   
   const logout: () => void = () => {
-    navigate('/');
     Cookies.remove(TOKEN);
+    navigate('/');
+  };
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
   
   return (
@@ -136,9 +148,38 @@ const AdminLayout: React.FC = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-          
-          </Typography>
+            <div className="header">
+              <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}><NavLink className="header-acc" to="/profile">Profile</NavLink></MenuItem>
+                <MenuItem onClick={handleClose}><NavLink className="header-acc" to="/account">My account</NavLink></MenuItem>
+              </Menu>
+            </div>
+            </div>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -155,11 +196,14 @@ const AdminLayout: React.FC = () => {
           { text: "Educations", link: "/education", icon: <BookIcon /> },
           { text: "Experience", link: "/experience", icon: <LibraryBooksIcon /> },
           { text: "Messages", link: "/message", icon: <MailIcon /> },
-          { text: "Logout", icon: <button onClick={logout} style={{border:"none", background:"none", cursor:"pointer"}}><LogoutIcon/></button>}].map((item, index) => (
-            <ListItemButton key={item.text} component="a" href={item.link}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
+          { text: "Logout", link:'/', icon:<LogoutIcon  onClick={logout} style={{ border: "none", background: "none", cursor: "pointer" }}/>}]
+          .map((item) => (
+            <ListItem key={item.text} disablePadding>
+            <ListItemButton  key={item.text} component={Link} to={item.link}>
+              <ListItemIcon >{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
+            </ListItem>
           ))}
         </List>
       </Drawer>
@@ -173,3 +217,5 @@ const AdminLayout: React.FC = () => {
 };
 
 export default AdminLayout;
+
+

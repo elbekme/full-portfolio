@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 
 import "antd/dist/reset.css";
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

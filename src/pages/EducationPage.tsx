@@ -29,7 +29,6 @@ const EducationPage: React.FC = () => {
     setSelected,
     setModalLoading,
   } = useEducation();
-  // const lineBreak: JSX.Element = <br/>;
   const lineBreak: ReactElement<any, any> = <br />;
 
   const [form] = Form.useForm();
@@ -107,7 +106,7 @@ const EducationPage: React.FC = () => {
           </Grid>
         </Grid>
         {lineBreak}
-        <div className="card">
+        <div className="component-card">
           {loading ? (
             <div className="loader"></div>
           ) : (

@@ -45,6 +45,11 @@ const LoginPage = () => {
         toast.success('You are Client!');
       }
 
+      if(user.role === "user"){
+        // toast.succes("You are User!");
+        navigate("/user");
+      }
+
       if(user.role === "admin") {
         toast.success('You are Admin!');
         Cookies.set(TOKEN, token);

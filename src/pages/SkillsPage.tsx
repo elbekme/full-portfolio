@@ -106,7 +106,7 @@ const SkillsPage: React.FC = () => {
         </Grid>
       </Grid>
       <br />
-      <div className="card">
+      <div className="component-card">
         {loading ? (
           <div className="loader"></div>
         ) : (

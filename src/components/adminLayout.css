@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    align-items: center;
+}
+.portfolio{
+    font-size: 20px;
+}
+.portfolio:hover{
+    text-decoration: dashed;
+    border-bottom: 2px solid white;
+}
+.header-acc{
+    text-decoration: none;
+    color: black;
+}
