@@ -11,7 +11,7 @@ import Education from "../types/education";
 
 interface EducationState {
   user: null | User;
-  experiences: Education[];
+  educations: Education[];
   loading: boolean;
   total: number;
   page: number;

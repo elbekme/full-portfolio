@@ -1,4 +1,4 @@
-interface Account {
+interface FormData {
     firstName: string;
     lastName: string;
     username: string;
@@ -15,4 +15,4 @@ interface Account {
     facebook: string;
   }
   
-  export default Account;
+  export default FormData;

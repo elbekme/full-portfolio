@@ -1,4 +1,5 @@
-import React, { useEffect, Fragment, ChangeEvent } from "react";
+import { useEffect, Fragment, ChangeEvent } from "react";
+import * as React from 'react';
 import { Form, Input, Modal } from "antd";
 import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";

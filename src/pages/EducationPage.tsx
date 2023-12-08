@@ -1,4 +1,5 @@
-import React, { useEffect, Fragment, ChangeEvent, ReactElement  } from "react";
+import { useEffect, Fragment, ChangeEvent } from "react";
+import * as React from 'react';
 import { Form, Input, Modal } from "antd";
 import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
@@ -29,7 +30,6 @@ const EducationPage: React.FC = () => {
     setSelected,
     setModalLoading,
   } = useEducation();
-  const lineBreak: ReactElement<any, any> = <br />;
 
   const [form] = Form.useForm();
 
@@ -105,7 +105,7 @@ const EducationPage: React.FC = () => {
             </Button>
           </Grid>
         </Grid>
-        {lineBreak}
+        <br/>
         <div className="component-card">
           {loading ? (
             <div className="loader"></div>

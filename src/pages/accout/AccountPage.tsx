@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useState } from 'react';
+import {FC, useEffect, useState } from 'react';
+import * as React from 'react';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { styled } from '@mui/material/styles';
@@ -32,7 +33,7 @@ const AccountPage: FC = () => {
 
   const{
       account,
-      loading,
+      // loading,
       getAccount,
     } = useAccount();
 
@@ -110,7 +111,7 @@ const AccountPage: FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'row',justifyContent:"space-between", flexWrap: 'wrap', gap: '10px' }}>
       <FormControl sx={{ width: '25ch' }}>
-        <OutlinedInput onChange={handleChange}  value={account.firstName}  name="firstName" placeholder="First name" />
+        <OutlinedInput onChange={handleChange}  value={AccForm.firstName}  name="firstName" placeholder="First name" />
       </FormControl>
 
       <FormControl  sx={{ width: '25ch' }}>

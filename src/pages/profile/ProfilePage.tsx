@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useEffect } from "react";
-import {Link, NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import AppBar from '@mui/material/AppBar';
 import BootstrapCard  from 'react-bootstrap/Card';
-import Card from '@mui/material/Card';
+// import Card from '@mui/material/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -47,7 +47,7 @@ function HideOnScroll(props: Props) {
     </Slide>
   );
 }
-const bull = (
+const bull=(
   <Box
     component="span"
     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)', backgroundColor: 'black', }}
@@ -247,7 +247,6 @@ const ProfilePage: React.FC = () => {
                 <div className="loader"></div>
               ) : (
                 <Carousel     
-                autoPlay={true}
                 interval={1500}
                 controls={true}
                 indicators={false} 
@@ -255,7 +254,7 @@ const ProfilePage: React.FC = () => {
                   {portfolios.map((portfolio: Portfolio) => (
                     <Carousel.Item key={portfolio._id} >
                       <div className="carousel-text"> 
-                      <BootstrapCard variant="flush" className="carousel-text " style={{ minWidth: '200px', maxWidth: '300px'}}>
+                      <BootstrapCard className="carousel-text " style={{ minWidth: '200px', maxWidth: '300px'}}>
                         <BootstrapCard.Img variant="top" style={{width:'100%',maxHeight:"200px"}} src={`https://ap-portfolio-backend.up.railway.app/upload/${portfolio.photo._id}.${portfolio.photo.name.split(".")[1]}`}  />
                         <BootstrapCard.Body>
                           <BootstrapCard.Title>Name: {portfolio.name}</BootstrapCard.Title>

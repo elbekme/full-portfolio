@@ -1,4 +1,5 @@
-import React, { useEffect, Fragment } from "react";
+import * as React from 'react';
+import { useEffect, Fragment } from "react";
 import { Form, Input, Modal, } from "antd";
 import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import { toast } from 'react-toastify';
