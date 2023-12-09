@@ -58,9 +58,7 @@ function HideOnScroll(props: Props) {
   //   </Box>
   // );
   
-  // interface UserData {
-  //   photo: string;
-  // }
+
 
   const ProfilePage: React.FC = () => {
     const {
@@ -100,11 +98,10 @@ function HideOnScroll(props: Props) {
   console.log(userInfo);
 
   const{
-    account,
     getAccount,
   } = useAccount();
 
-
+  
 
   useEffect(() => {
     getSkills();
@@ -115,7 +112,8 @@ function HideOnScroll(props: Props) {
     getAccount();
   }, [getSkills, getMessages, getEducations, getExperiences, getPortfolios, getAccount, user]);
 
-
+  // console.log(account.photo);
+  
   return (
     <React.Fragment>
       <CssBaseline />
@@ -123,11 +121,11 @@ function HideOnScroll(props: Props) {
         <AppBar>
           <Toolbar className="profile-header" >
             <Typography className="profile-header-item" variant="h6" component="div">
-                  <a className="profile-link" href="#education">education</a>
-                  <a className="profile-link" href="#skill">skills</a>
-                  <a className="profile-link" href="#experience">experience</a>
-                  <a className="profile-link" href="#portfolio">portfolios</a>
-                  <a className="profile-link" href="#messages">message</a>
+                  <a className="profile-link" href="#skill">Skills</a>
+                  <a className="profile-link" href="#education">Education</a>
+                  <a className="profile-link" href="#experience">Experience</a>
+                  <a className="profile-link" href="#portfolio">Portfolios</a>
+                  <a className="profile-link" href="#messages">Message</a>
                   <NavLink to="/home">
                     <button className="btn-back">go back</button>
                 </NavLink>
@@ -136,6 +134,7 @@ function HideOnScroll(props: Props) {
         </AppBar>
       </HideOnScroll>
       <Toolbar />
+
       <Container sx={{ marginBottom: '40px' }}>
         <Box sx={{ my: 2 }}>
             <div className="header-info">
@@ -144,16 +143,9 @@ function HideOnScroll(props: Props) {
                 My user name {userInfo.username}. 
                 My role is {userInfo.role}.</div>
               </div>
-              <div className="header-info-img">
-                {/* <img className="header-image" src={`https://ap-portfolio-backend.up.railway.app/upload/${account.photo}`} alt="image" /> */}
-                {account && account.length > 0 && (
-                  <img
-                    className="header-image"
-                    src={`https://ap-portfolio-backend.up.railway.app/upload/${account[0].photo}`}
-                    alt="image"
-                  />
-                )}
 
+              <div className="header-info-img">
+                <img className="header-image" src={`https://ap-portfolio-backend.up.railway.app/upload/${userInfo?.photo}`} alt="image" />
               </div>
             </div>
         </Box>
