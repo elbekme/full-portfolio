@@ -47,14 +47,16 @@ function HideOnScroll(props: Props) {
     </Slide>
   );
 }
-const bull=(
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)', backgroundColor: 'black', }}
-  >
-    •
-  </Box>
-);
+
+// const bull=(
+//   <Box
+//     component="span"
+//     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)', backgroundColor: 'black', }}
+//   >
+//     •
+//   </Box>
+// );
+
 const ProfilePage: React.FC = () => {
   const {
     user,
@@ -151,7 +153,7 @@ const ProfilePage: React.FC = () => {
                 <div className="loader"></div>
               ) : (
                 <Carousel     
-                autoPlay={true}
+                // autoPlay={true}
                 interval={1500}
                 controls={true}
                 indicators={false} 
@@ -159,7 +161,7 @@ const ProfilePage: React.FC = () => {
                   {skills.map((skill: Skill) => (
                     <Carousel.Item key={skill._id} >
                       <div className="carousel-text"> 
-                      <BootstrapCard variant="flush" className="carousel-text " style={{ minWidth: '300px'}}>
+                      <BootstrapCard className="carousel-text " style={{ minWidth: '300px'}}>
                         <ListGroup variant="flush">
                         <ListGroup.Item style={{ fontWeight: 'bold' }}>Name:  {skill.name}</ListGroup.Item>
                         <ListGroup.Item>Percent:  {skill.percent}</ListGroup.Item>
@@ -181,7 +183,7 @@ const ProfilePage: React.FC = () => {
                 <div className="loader"></div>
               ) : (
                 <Carousel     
-                autoPlay={true}
+                // autoPlay={true}
                 interval={1500}
                 controls={true}
                 indicators={false} 
@@ -189,7 +191,7 @@ const ProfilePage: React.FC = () => {
                   {educations.map((education: Education) => (
                     <Carousel.Item key={education._id} >
                       <div className="carousel-text"> 
-                      <BootstrapCard variant="flush" className="carousel-text" style={{ minWidth: '300px'}}>
+                      <BootstrapCard className="carousel-text" style={{ minWidth: '300px'}}>
                         <ListGroup variant="flush">
                         <ListGroup.Item style={{ fontWeight: 'bold' }}>Name: {education.name}</ListGroup.Item>
                         <ListGroup.Item>Level: {education.level}</ListGroup.Item>
@@ -214,7 +216,7 @@ const ProfilePage: React.FC = () => {
                 <div className="loader"></div>
               ) : (
                 <Carousel     
-                autoPlay={true}
+                // autoPlay={true}
                 interval={1500}
                 controls={true}
                 indicators={false} 
@@ -222,7 +224,7 @@ const ProfilePage: React.FC = () => {
                   {experiences.map((experience: Experience) => (
                     <Carousel.Item key={experience._id} >
                       <div className="carousel-text"> 
-                      <BootstrapCard variant="flush" className="carousel-text " style={{ minWidth: '300px'}}>
+                      <BootstrapCard className="carousel-text " style={{ minWidth: '300px'}}>
                         <ListGroup variant="flush">
                         <ListGroup.Item style={{ fontWeight: 'bold' }}>Company name: {experience.companyName}</ListGroup.Item>
                         <ListGroup.Item>Work name: {experience.workName}</ListGroup.Item>
@@ -280,7 +282,7 @@ const ProfilePage: React.FC = () => {
                 <div className="loader"></div>
               ) : (
                 <Carousel     
-                autoPlay={true}
+                // autoPlay={true}
                 interval={1500}
                 controls={true}
                 indicators={false} 
@@ -288,7 +290,7 @@ const ProfilePage: React.FC = () => {
                   {messages.map((message: Message) => (
                     <Carousel.Item key={message._id} >
                       <div className="carousel-text"> 
-                      <BootstrapCard variant="flush" className="carousel-text" style={{ minWidth: '300px'}}>
+                      <BootstrapCard className="carousel-text" style={{ minWidth: '300px'}}>
                         <ListGroup variant="flush">
                         <ListGroup.Item style={{ fontWeight: 'bold' }}>Title: {message.title}</ListGroup.Item>
                         <ListGroup.Item>User: {message.user}</ListGroup.Item>

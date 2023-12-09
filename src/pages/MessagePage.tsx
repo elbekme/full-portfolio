@@ -58,7 +58,7 @@ const MessagePage: React.FC = () => {
     getMessages();
   }, [getMessages, message]);
 
-  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
+  const handlePageChange = (_: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
   };
 
@@ -116,7 +116,7 @@ const MessagePage: React.FC = () => {
               <MessageCard
                 key={message._id}
                 message={message}
-                // userId={userId}
+                userId={userId}
                 deleteMessage={deleteMessage}
                 editMessage={editMessage}
               />

@@ -7,11 +7,11 @@ import { FormInstance } from "antd";
 import request from "../server/index";
 import User from "../types/user";
 import { USER } from "../constants/index";
-import Experience from "../types/experience";
+import Message from "../types/message";
 
 interface MessageState {
-  message: null | User;
-  experiences: Experience[];
+  user: null | User;
+  messages: Message[];
   loading: boolean;
   total: number;
   page: number;

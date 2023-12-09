@@ -56,7 +56,7 @@ const ExperiencePage: React.FC = () => {
     getExperiences();
   }, [getExperiences, user]);
 
-  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
+  const handlePageChange = (_: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
 };
 

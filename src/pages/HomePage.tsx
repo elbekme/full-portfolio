@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Fragment, useEffect } from "react";
 import { CircularProgress } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
@@ -13,14 +13,14 @@ import usePortfolio from "../store/portfolio";
 import useSkill from "../store/skill";
 import useMessage from '../store/message';
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+// const bull = (
+//   <Box
+//     component="span"
+//     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+//   >
+//     •
+//   </Box>
+// );
 
 const HomePage = () => {
   const [progress, setProgress] = React.useState(0);

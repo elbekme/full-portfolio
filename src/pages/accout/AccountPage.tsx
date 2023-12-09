@@ -1,5 +1,6 @@
-import {FC, useEffect, useState } from 'react';
-import * as React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
+import React from 'react';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { styled } from '@mui/material/styles';
@@ -22,13 +23,12 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-const AccountPage: FC = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
+const AccountPage: React.FC = () => {
+  // const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState<null | File>(null);
 
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   console.log(e.target.value);
-  // };
+
 
 
   const{
@@ -161,7 +161,7 @@ const AccountPage: FC = () => {
 
       <FormControl  sx={{ width: '100%' }}>
       <TextareaAutosize
-          rows={8}
+          minRows={8}
           placeholder="Info"
           name="info"
           onChange={handleChange}
@@ -171,8 +171,22 @@ const AccountPage: FC = () => {
           Upload file
         <VisuallyHiddenInput type="file" />
         </Button>
+        {/* <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleFileChange(e as unknown as ChangeEvent<HTMLInputElement>)} component="label" style={{ width: "100%" }} variant="contained" startIcon={<CloudUploadIcon />}>
+          Upload file
+          <VisuallyHiddenInput type="file" />
+        </Button> */}
 
       <Button onClick={handleSubmit} style={{width:"100%"}} primary variant="contained">Submit</Button>
+      {/* <Button
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSubmit(e as React.FormEvent<HTMLFormElement>)}
+        style={{ width: "100%" }}
+        primary
+        variant="contained"
+      >
+        Submit
+      </Button> */}
+
+
     </div>
   );
 };

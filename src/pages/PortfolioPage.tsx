@@ -29,7 +29,8 @@ const PortfolioPage: React.FC = () => {
   } = usePortfolio();
 
   const [form] = Form.useForm();
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState<null | File>(null);
+
   
   useEffect(() => {
     getPortfolios();
@@ -75,7 +76,7 @@ const PortfolioPage: React.FC = () => {
     }
   };
 
-  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
+  const handlePageChange = (_: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
   };
 

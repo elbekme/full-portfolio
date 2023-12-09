@@ -56,7 +56,7 @@ const EducationPage: React.FC = () => {
     getEducations();
   }, [getEducations, user]);
 
-  const handlePageChange = (event: ChangeEvent<unknown>, newPage: number): void => {
+  const handlePageChange = (_: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
   };
 
