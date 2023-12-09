@@ -86,6 +86,23 @@
     animation: jump7456 0.5s linear infinite;
   }
   
+
+  .account-form{
+    box-shadow: none;
+    background: none;
+    height: 50px;
+    width: auto;
+    position:static;
+    text-align: left;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    padding-top: 5px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius:0;
+  }
+
   @keyframes jump7456 {
     15% {
       border-bottom-right-radius: 3px;

@@ -7,9 +7,11 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import { toast } from 'react-toastify';
 
 import useAccount from '../../store/account';
 import request from '../../server/index';
+import "../skills.css";
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -81,6 +83,7 @@ const AccountPage: React.FC = () => {
     const { name, value } = e.target;
     setAccForm((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -102,11 +105,12 @@ const AccountPage: React.FC = () => {
       getAccount();
 
       setAccForm((prevFormData) => ({ ...prevFormData, success: true }));
+      toast.success('Success!');
     } catch (error) {
       console.log(error);
-      // toast.error('Error changing');
     }
   };
+
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row',justifyContent:"space-between", flexWrap: 'wrap', gap: '10px' }}>
@@ -161,32 +165,34 @@ const AccountPage: React.FC = () => {
 
       <FormControl  sx={{ width: '100%' }}>
       <TextareaAutosize
-          minRows={8}
+          minRows={4}
           placeholder="Info"
           name="info"
           onChange={handleChange}
         />
       </FormControl>
-      <Button onClick={handleFileChange} component="label" style={{width:"100%"}} variant="contained" startIcon={<CloudUploadIcon />}>
+
+      {/* <Button onChange={handleFileChange} component="label"  variant="contained" startIcon={<CloudUploadIcon />}>
           Upload file
         <VisuallyHiddenInput type="file" />
         </Button>
-        {/* <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleFileChange(e as unknown as ChangeEvent<HTMLInputElement>)} component="label" style={{ width: "100%" }} variant="contained" startIcon={<CloudUploadIcon />}>
+
+        <Button onClick={handleSubmit} component="label"  variant="contained" style={{width:"100%"}}>Submit</Button> */}
+        <form className='account-form' onSubmit={handleSubmit}>
+        <Button
+          component="label"
+          variant="contained"
+          style={{ marginTop: "5px", width:'100%'}}
+          startIcon={<CloudUploadIcon />}
+        >
           Upload file
-          <VisuallyHiddenInput type="file" />
-        </Button> */}
+          <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+        </Button>
 
-      <Button onClick={handleSubmit} style={{width:"100%"}} primary variant="contained">Submit</Button>
-      {/* <Button
-        onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSubmit(e as React.FormEvent<HTMLFormElement>)}
-        style={{ width: "100%" }}
-        primary
-        variant="contained"
-      >
-        Submit
-      </Button> */}
-
-
+        <Button type="submit" variant="contained" style={{ width: '100%', marginTop: "5px" }} >
+          Submit
+        </Button>
+      </form>
     </div>
   );
 };

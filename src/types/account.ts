@@ -1,4 +1,5 @@
 interface FormData {
+    photo: any;
     firstName: string;
     lastName: string;
     username: string;

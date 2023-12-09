@@ -1,16 +1,16 @@
 import '../pages/login.css';
-import { useState, ChangeEvent, FormEvent } from 'react';
+// import { useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../store/auth';
 import Register from '../types/register';
 import * as React from 'react';
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  username: string;
-  password: string;
-}
+// interface FormData {
+//   firstName: string;
+//   lastName: string;
+//   username: string;
+//   password: string;
+// }
 
 const RegisterPage = () => {
   const register = useAuth((state) => state.register);
@@ -19,21 +19,17 @@ const RegisterPage = () => {
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=> {
       e.preventDefault();
+      const formData = new FormData(e.currentTarget);
       const user: Register = {
-        firstName: e.currentTarget.firstName.value,
-        lastName: e.currentTarget.lastName.value,
-        username: e.currentTarget.username.value.trim(),
-        password: e.currentTarget.password.value.trim(),
+        // firstName: e.currentTarget.firstName.value,
+        firstName: formData.get('firstName') as string,
+        lastName: formData.get('lastName') as string,
+        username: formData.get('username') as string,
+        password: formData.get('password') as string,
       };
       register(user, navigate);
     }
 
-
-
-
-
-
-  
 
   return (
     <>

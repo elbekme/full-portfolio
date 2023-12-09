@@ -57,7 +57,7 @@ const SkillsPage: React.FC = () => {
     getSkills();
   }, [getSkills, user]);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number): void => {
+  const handlePageChange = (_: React.ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);
   };
 

@@ -12,7 +12,7 @@ import MessageCard from "../components/card/MessageCard";
 
 const MessagePage: React.FC = () => {
   const {
-    message,
+    user,
     messages,
     loading,
     total,
@@ -56,7 +56,7 @@ const MessagePage: React.FC = () => {
 
   useEffect(() => {
     getMessages();
-  }, [getMessages, message]);
+  }, [getMessages, user]);
 
   const handlePageChange = (_: ChangeEvent<unknown>, newPage: number): void => {
     setPage(newPage);

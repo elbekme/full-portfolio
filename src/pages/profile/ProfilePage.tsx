@@ -41,6 +41,7 @@ function HideOnScroll(props: Props) {
     target: window ? window() : undefined,
   });
 
+  
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
@@ -49,16 +50,20 @@ function HideOnScroll(props: Props) {
 }
 
 // const bull=(
-//   <Box
-//     component="span"
-//     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)', backgroundColor: 'black', }}
-//   >
-//     •
-//   </Box>
-// );
+  //   <Box
+  //     component="span"
+  //     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)', backgroundColor: 'black', }}
+  //   >
+  //     •
+  //   </Box>
+  // );
+  
+  // interface UserData {
+  //   photo: string;
+  // }
 
-const ProfilePage: React.FC = () => {
-  const {
+  const ProfilePage: React.FC = () => {
+    const {
     user,
     skills,
     loading,
@@ -140,7 +145,15 @@ const ProfilePage: React.FC = () => {
                 My role is {userInfo.role}.</div>
               </div>
               <div className="header-info-img">
-                <img className="header-image" src={`https://ap-portfolio-backend.up.railway.app/upload/${account.photo}`} alt="image" />
+                {/* <img className="header-image" src={`https://ap-portfolio-backend.up.railway.app/upload/${account.photo}`} alt="image" /> */}
+                {account && account.length > 0 && (
+                  <img
+                    className="header-image"
+                    src={`https://ap-portfolio-backend.up.railway.app/upload/${account[0].photo}`}
+                    alt="image"
+                  />
+                )}
+
               </div>
             </div>
         </Box>
@@ -322,7 +335,7 @@ const ProfilePage: React.FC = () => {
                 <TelegramIcon fontSize="large" />
               </a>
             </div>
-          </div>
+        </div>
       </Box>
       </Container>
     </React.Fragment>
