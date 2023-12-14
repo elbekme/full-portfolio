@@ -53,7 +53,7 @@ const LoginPage = () => {
       if(user.role === "admin") {
         toast.success('You are Admin!');
         Cookies.set(TOKEN, token);
-        window.location.href = 'https://portfolio-three-gamma-75.vercel.app/dashboard';
+        window.location.href = 'https://portfolio-three-gamma-75.vercel.app';
         return;
       }
   };
