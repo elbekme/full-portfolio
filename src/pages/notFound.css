@@ -1,11 +1,15 @@
 .page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;height: 100%;
 }
-.contaier{
+.container-not_fount{
     width: 100%;
     height: 100%;
+    background: white;
 }
 .page_404  img{ width:100%;}
 
+.text-center{
+  text-align: center;
+}
 .four_zero_four_bg{
  
  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
@@ -31,7 +35,4 @@
   .contant_box_404{ margin-top:-50px; text-align: center;}
 .go-home{
     font-size: 30px;
-}
-.text-center{
-  text-align: center;
 }
