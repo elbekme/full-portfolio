@@ -39,7 +39,7 @@ const LoginPage = () => {
 
       login(user);
       setUser(user);
-      navigate("/home");
+      navigate("/dashboard");
 
       if(user.role === "client"){
         toast.success('You are Client!');
@@ -62,8 +62,8 @@ const LoginPage = () => {
     <div className="login-page">
       <div className="login">
         <form className="signUp" onSubmit={submit}>
-          <h3>Create Your Account</h3>
-          <p>
+          <h2 style={{fontFamily: "sans-serif"}}>Create Your Account</h2>
+          <p style={{color: 'black', fontFamily:'sans-serif'}}>
             Just enter your username <br />
             and your password for join.
           </p>
@@ -80,11 +80,11 @@ const LoginPage = () => {
             placeholder="Insert Password"
             required
           />
-          <button className="form-btn sx log-in" type="submit">
+          <button style={{backgroundColor: '#47B5FF'}} className="form-btn sx log-in" type="submit">
             Log In
           </button>
           <Link to="/register">
-            <button className="form-btn dx" type="submit">
+            <button style={{backgroundColor: '#1363DF'}} className="form-btn dx" type="submit">
               Sign Up
             </button>
           </Link>

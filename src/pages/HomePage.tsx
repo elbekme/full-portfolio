@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
-import AdminLayout from "../components/AdminLayout";
+// import AdminLayout from "../components/AdminLayout";
 import useEducation from "../store/education";
 import useExperience from "../store/experience";
 import usePortfolio from "../store/portfolio";
@@ -74,7 +74,7 @@ const HomePage = () => {
       <CardContent>
         <Stack spacing={4} direction="row">
         <h2>Skills {skillTotal}</h2>
-        <CircularProgress variant="determinate" value={skillTotal} />
+        {/* <CircularProgress variant="determinate" value={skillTotal} /> */}
         <CircularProgress variant="determinate" value={progress} />
       </Stack>
       </CardContent>
@@ -84,7 +84,7 @@ const HomePage = () => {
       <CardContent>
         <Stack spacing={4} direction="row">
         <h2>Portfolios {portfolioTotal}</h2>
-        <CircularProgress variant="determinate" value={portfolioTotal} />
+        {/* <CircularProgress variant="determinate" value={portfolioTotal} /> */}
         <CircularProgress variant="determinate" value={progress} />
       </Stack>
       </CardContent>
@@ -94,7 +94,7 @@ const HomePage = () => {
       <CardContent>
         <Stack spacing={4} direction="row">
         <h2>Educations {educationTotal}</h2>
-        <CircularProgress variant="determinate" value={educationTotal} />
+        {/* <CircularProgress variant="determinate" value={educationTotal} /> */}
         <CircularProgress variant="determinate" value={progress} />
       </Stack>
       </CardContent>
@@ -104,7 +104,7 @@ const HomePage = () => {
       <CardContent>
         <Stack spacing={4} direction="row">
         <h2>Experiences {experienceTotal}</h2>
-        <CircularProgress variant="determinate" value={experienceTotal} />
+        {/* <CircularProgress variant="determinate" value={experienceTotal} /> */}
         <CircularProgress variant="determinate" value={progress} />
       </Stack>
       </CardContent>
@@ -114,13 +114,13 @@ const HomePage = () => {
       <CardContent>
         <Stack spacing={4} direction="row">
         <h2>Messages {messageTotal}</h2>
-        <CircularProgress variant="determinate" value={messageTotal} />
+        {/* <CircularProgress variant="determinate" value={messageTotal} /> */}
         <CircularProgress variant="determinate" value={progress} />
       </Stack>
       </CardContent>
       </Card>
 
-      <AdminLayout />
+      {/* <AdminLayout /> */}
     </Fragment>
   );
 };

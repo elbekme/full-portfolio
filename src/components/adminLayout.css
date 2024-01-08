@@ -1,4 +1,4 @@
-.header{
+/* .header{
     display: flex;
     justify-content: end;
     width: 100%;
@@ -14,4 +14,15 @@
 .header-acc{
     text-decoration: none;
     color: black;
-}
+} */
+
+.admin-layout {
+    height: 100vh;
+    .admin-logo {
+      padding: 24px;
+    }
+    .ant-layout-content {
+      height: calc(100vh - 64px);
+      overflow: auto;
+    }
+  }

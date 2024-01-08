@@ -49,17 +49,6 @@ function HideOnScroll(props: Props) {
   );
 }
 
-// const bull=(
-  //   <Box
-  //     component="span"
-  //     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)', backgroundColor: 'black', }}
-  //   >
-  //     •
-  //   </Box>
-  // );
-  
-
-
   const ProfilePage: React.FC = () => {
     const {
     user,
@@ -126,7 +115,7 @@ function HideOnScroll(props: Props) {
                   <a className="profile-link" href="#experience">Experience</a>
                   <a className="profile-link" href="#portfolio">Portfolios</a>
                   <a className="profile-link" href="#messages">Message</a>
-                  <NavLink to="/home">
+                  <NavLink to="/dashboard">
                     <button className="btn-back">go back</button>
                 </NavLink>
             </Typography>

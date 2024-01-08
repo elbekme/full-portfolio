@@ -1,9 +1,8 @@
 import * as React from 'react';
-import Skill from "../../types/skill";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
+import Skill from "../../types/skill";
 import '../../pages/skills.css';
 
 
