@@ -16,6 +16,7 @@
   
   .flip-card-inner {
     position: relative;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -38,17 +39,21 @@
   
   .flip-card-front {
     background-color: #00A9FF;
+    /* background-color: white; */
     color: white;
+    /* color: black; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 10px;
     overflow: hidden;
+    border-radius: 5px;
   }
   
   .flip-card-back {
     background: white;
     transform: rotateY(180deg);
+    border-radius: 5px;
     padding: 20px;
     display: flex;
     flex-direction: column;

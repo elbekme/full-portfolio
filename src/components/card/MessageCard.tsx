@@ -29,8 +29,8 @@ const MessageCard: React.FC<MessageCardProps> = ({editMessage, deleteMessage, me
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <h2>{message.title}</h2>
-          <h2>{message.user}</h2>
-          <h2>{message.answer}</h2>
+          <h4>{message.user}</h4>
+          <h4>{message.answer}</h4>
           <p style={{color:"white"}}>{message.message}</p>
         </div>
         {userId.role === 'client' ? "" : 

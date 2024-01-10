@@ -26,7 +26,7 @@ const ExperienceCard: React.FC<ExperinceCardProps> = ({editExperience, deleteExp
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <h2>{experience.workName}</h2>
-          <h2>{experience.companyName}</h2>
+          <h4>{experience.companyName}</h4>
           <p style={{color:"white"}}>{experience.description}</p>
         </div>
         <div className="flip-card-back">

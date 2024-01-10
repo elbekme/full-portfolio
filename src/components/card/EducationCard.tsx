@@ -26,7 +26,7 @@ const EducationCard: React.FC<EducationCardProps> = ({editEducation, deleteEduca
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <h2>{education.name}</h2>
-          <h2>{education.level}</h2>
+          <h4>{education.level}</h4>
           <p style={{color:"white"}}>{education.description}</p>
         </div>
         <div className="flip-card-back">

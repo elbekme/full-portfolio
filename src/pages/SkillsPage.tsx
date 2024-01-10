@@ -4,12 +4,14 @@ import { Form, Input, Modal, } from "antd";
 import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import { toast } from 'react-toastify';
 import Pagination from "@material-ui/lab/Pagination";
+import Table from 'react-bootstrap/Table';
 
 import SkillCard from "../components/card/SkillCard";
 import request from "../server/index";
 import useSkill from "../store/skill";
 import Skill from "../types/skill";
 import "./skills.css";
+
 
 const SkillsPage: React.FC = () => {
   const {
@@ -108,13 +110,23 @@ const SkillsPage: React.FC = () => {
       </Grid>
       <br />
       <div className="component-card">
+        {/* <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Percent</th>
+            <th>Edit / Delete</th>
+          </tr>
+        </thead> */}
         {loading ? (
           <div className="loader"></div>
         ) : (
           skills.map((skill: Skill) => (
+
             <SkillCard key={skill._id} skill={skill} deleteSkill={deleteSkill} editSkill={editSkill}/>
-          ))
-        )}
+            ))
+            )}
+        {/* </Table> */}
       </div>
       <br />
       <Pagination
